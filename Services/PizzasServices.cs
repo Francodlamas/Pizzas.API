@@ -9,7 +9,7 @@ using Pizzas.API.Helpers;
 using Pizzas.API.Utils;
 using Pizzas.API.Services;
 
-namespace Pizzas.API.PizzasServices{
+namespace Pizzas.API.Services{
     public static class PizzasServices{
 
         public static List <Pizza> GetAll(){

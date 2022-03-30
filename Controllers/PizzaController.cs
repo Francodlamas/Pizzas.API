@@ -64,7 +64,6 @@ namespace Pizzas.API.Controllers
             catch(Exception error){
                 return Ok("error error error");
             }
-           
-        }  
+        }
     }
 }
