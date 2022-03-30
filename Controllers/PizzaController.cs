@@ -18,27 +18,53 @@ namespace Pizzas.API.Controllers
 
         [HttpGet]
         public IActionResult GetAll(){
-            return Ok(PizzasServices.GetAll()); 
+            try{
+                return Ok(PizzasServices.GetAll()); 
+            } 
+            catch(Exception error){
+                return Ok("error error error");
+            }
         }
 
         [HttpGet("{id}")] 
         public IActionResult GetById (int id) {
-            return Ok(PizzasServices.getById(id));
+            try{
+                return Ok(PizzasServices.getById(id));
+            } 
+            catch(Exception error){
+                return Ok("error error error");
+            }
         }
         
         [HttpPost]
         public IActionResult Create (Pizza pizza) {
-            return Ok(PizzasServices.Create(pizza));
+            try{
+                return Ok(PizzasServices.Create(pizza));
+            } 
+            catch(Exception error){
+                return Ok("error error error");
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, Pizza pizza) {
-           return Ok(PizzasServices.Update(id, pizza));
+           try{
+               return Ok(PizzasServices.Update(id, pizza));
+            } 
+            catch(Exception error){
+                return Ok("error error error");
+            }
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteById(int id) {
-           return Ok(PizzasServices.DeleteById(id));
+            try{
+                return Ok(PizzasServices.DeleteById(id));
+            } 
+            catch(Exception error){
+                return Ok("error error error");
+            }
+           
         }  
     }
 }
