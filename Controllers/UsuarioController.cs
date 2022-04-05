@@ -21,7 +21,7 @@ namespace Pizzas.API.Controllers{
                 return Ok(UsuariosServices.GetAll()); 
             } 
             catch(Exception error){
-                return Ok("error error error");
+                return NotFound(error);
             }
         }
 
@@ -31,7 +31,7 @@ namespace Pizzas.API.Controllers{
                 return Ok(UsuariosServices.getById(id));
             } 
             catch(Exception error){
-                return Ok("error error error");
+                return NotFound(error);
             }
         }
 
@@ -41,7 +41,7 @@ namespace Pizzas.API.Controllers{
                 return Ok(UsuariosServices.Create(user));
             } 
             catch(Exception error){
-                return Ok("error error error");
+                return NotFound(error);
             }
         }
 
@@ -51,7 +51,7 @@ namespace Pizzas.API.Controllers{
                return Ok(UsuariosServices.Update(id, user));
             } 
             catch(Exception error){
-                return Ok("error error error");
+                return NotFound(error);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Pizzas.API.Controllers{
                 return Ok(UsuariosServices.DeleteById(id));
             } 
             catch(Exception error){
-                return Ok("error error error");
+                return NotFound(error);
             }
         }
     }
