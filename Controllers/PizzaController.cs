@@ -28,12 +28,22 @@ namespace Pizzas.API.Controllers
 
         [HttpGet("{id}")] 
         public IActionResult GetById (int id) {
+            Pizzas pizza = null;
+
+            if(id <= 0){
+                return BadRequest();
+            }
             try{
-                return Ok(PizzasServices.getById(id));
+                pizza = PizzasServices.getById(id);
             } 
             catch(Exception error){
-                return Ok("error error error");
+                if(error == 404){
+                    return NotFound(error);
+                }else{
+                    return Ok(error);
+                }
             }
+            return Ok();
         }
         
         [HttpPost]

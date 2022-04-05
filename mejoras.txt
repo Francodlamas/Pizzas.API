@@ -1,7 +1,10 @@
-try catch
-servicios
-helper
 storeprocedures
-tabla usuarios, donde un usuario solo puede pedir 1 pizza
-creacion de controller que pueda crear, actualizar, obtener y eliminar usuarios
 investigar/implementar swagger
+
+hechos:
+
+try catch
+servicios 
+helper 
+creacion de controller que pueda crear, actualizar, obtener y eliminar usuarios
+tabla usuarios, donde un usuario solo puede pedir 1 pizza
