@@ -18,7 +18,7 @@ namespace Pizzas.API.Services{
             List<Usuarios> user = null;
             string query ="SELECT * FROM Usuarios";
             
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 user = db.Query<Usuarios>(query).ToList();
             }
             return user;
@@ -29,7 +29,7 @@ namespace Pizzas.API.Services{
             Usuarios user = null;
             string query ="SELECT * FROM Usuarios WHERE Id = @id";
             
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 usuario = db.QueryFirstOrDefault<Usuario>(query, new {id = idUsuario});
             }
             return usuario;
@@ -40,7 +40,7 @@ namespace Pizzas.API.Services{
             string query = "INSERT INTO Usuarios (Nombre, Pizza) VALUES (@nombre, @pizza)";
             int RegistrosCreados = 0;
             
-            using (SqlConnection db = ){
+            using (SqlConnection db =BD.GetConnection() ){
                 RegistrosCreador = db.Execute(query, new{nombre = user.nombre, pizza = user.pizza});
             }
             return RegistrosCreados;
@@ -50,7 +50,7 @@ namespace Pizzas.API.Services{
             int RegistrosEliminados = 0;
             string query = "DELETE * FROM Usuarios WHERE Id = @id";
 
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 RegistrosEliminados = db.Execute(query, new{Id = id});
             }
             return RegistrosEliminados;
@@ -60,7 +60,7 @@ namespace Pizzas.API.Services{
             string query = "UPDATE Usuarios SET (Nombre = @nombre, Pizza = @pizza)";
             int RegistrosActualizados = 0;
 
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 RegistrosActualizados = db.Execute(query, new{nombre = user.nombre, pizza = user.pizza});
             }
             return RegistrosActualizados;

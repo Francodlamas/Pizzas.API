@@ -16,7 +16,7 @@ namespace Pizzas.API.Services{
             List<Pizza> pizzas = null;
             String query ="SELECT * FROM Pizzas";
             
-            using (SqlConnection db = ){
+            using (SqlConnection db =BD.GetConnection() ){
                 pizzas = db.Query<Pizza>(query).ToList();
             }
             return pizzas;
@@ -27,7 +27,7 @@ namespace Pizzas.API.Services{
             Pizza pizza = null;
             String query ="SELECT * FROM Pizzas WHERE Id = @id";
             
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 pizza = db.QueryFirstOrDefault<Pizza>(query, new {id = idPizza});
             }
             return pizza;
@@ -38,7 +38,7 @@ namespace Pizzas.API.Services{
             String query = "INSERT INTO Pizzas (Nombre, LibreGluten, Importe, Descripcion) VALUES (@nombre, @libreGluten, @importe, @descripcion)";
             int RegistrosCreados = 0;
             
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 RegistrosCreador = db.Execute(query, new{nombre = pizza.nombre, libreGluten = pizza.LibreGluten, importe = pizza.Importe, descripcion = pizza.Descripcion});
             }
             return RegistrosCreados;
@@ -48,7 +48,7 @@ namespace Pizzas.API.Services{
             int RegistrosEliminados = 0;
             String query = "DELETE * FROM Pizzas WHERE Id = @id";
 
-            using (SqlConnection db = ){
+            using (SqlConnection db = BD.GetConnection()){
                 RegistrosEliminados = db.Execute(query, new{Id = id});
             }
             return RegistrosEliminados;
@@ -58,7 +58,7 @@ namespace Pizzas.API.Services{
             String query = "UPDATE Pizza SET (Nombre = @nombre, LibreGluten = @LibreGluten, Importe = @Importe, Descripcion = @Descripcion)";
             int RegistrosActualizados = 0;
 
-            using (SqlConnection db = ){
+            using (SqlConnection db =BD.GetConnection ()){
                 RegistrosActualizados = db.Execute(query, new{nombre=pizza.nombre,libreGluten=pizza.LibreGluten,Importe=pizza.Importe,Descripcion=pizza.Descripcion});
             }
             return RegistrosActualizados;
